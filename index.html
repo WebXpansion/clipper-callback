@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Clipper</title>
+<style>
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0d0d10; color: #e8e8ee;
+         font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  a { color: #8cb8ff; }
+</style>
+</head>
+<body>
+<main>
+  <p>Retour vers Clipper…</p>
+  <p><small>Si rien ne se passe, <a id="lien" href="http://localhost:8787/tiktok/callback">clique ici</a> (le clipper doit être lancé sur ce PC).</small></p>
+</main>
+<script>
+  // Page relais : TikTok refuse « localhost » comme adresse de retour, il renvoie donc ici (https),
+  // et cette page transmet aussitôt le code de connexion au clipper qui tourne sur le PC. Rien n'est stocké en ligne.
+  var cible = 'http://localhost:8787/tiktok/callback' + location.search;
+  document.getElementById('lien').href = cible;
+  location.replace(cible);
+</script>
+</body>
+</html>
